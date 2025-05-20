@@ -1,0 +1,63 @@
+body {
+    background-color: #f8f9fa;
+    font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: none;
+    border-radius: 8px;
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 1rem;
+}
+
+.card-title {
+    color: #333;
+    font-weight: 600;
+}
+
+.table th {
+    font-weight: 600;
+    color: #495057;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto !important;
+}
+
+footer {
+    border-top: 1px solid #eee;
+    padding-top: 2rem;
+    margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .lead {
+        font-size: 1rem;
+    }
+} 
