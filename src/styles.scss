@@ -1,31 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@use "sass:color";
+/* 全域樣式設定 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
 
-/* 導入 Bootstrap */
-// @import '~bootstrap/dist/css/bootstrap.min.css';
-// /* 導入 ngx-datatable 樣式 */
-// @import '~@swimlane/ngx-datatable/index.css';
-// @import '~@swimlane/ngx-datatable/themes/material.css';
-// @import '~@swimlane/ngx-datatable/themes/bootstrap.css';
-// @import '~@swimlane/ngx-datatable/themes/dark.css';
-// @import '~@swimlane/ngx-datatable/assets/icons.css';
+:root {
+  --primary-color: #1976d2;
+  --secondary-color: #607d8b;
+  --accent-color: #ff4081;
+  --text-color: #333333;
+  --light-gray: #f5f5f5;
+  --border-color: #e0e0e0;
+}
 
 body {
-  background-color: #f8f9fa;
-  font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+  font-family: 'Noto Sans TC', "Microsoft JhengHei", "PingFang TC", sans-serif;
+  color: var(--text-color);
+  background-color: var(--light-gray);
+  margin: 0;
+  padding: 0;
+  padding-left:10px;
+  line-height: 1.6;
 }
 
-.container {
-  max-width: 1200px;
-  padding-bottom: 4rem;
-}
-
-/* 移動版優化 */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 15px;
-  }
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
   
-  .card {
-    margin-bottom: 1rem;
+  &:hover, &:active, &:focus {
+    background-color: color.adjust(#1976d2, $lightness: -10%);
+    border-color: color.adjust(#1976d2, $lightness: -10%);
+  }
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1) !important;
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgxChartsModule, Color, ScaleType } from '@swimlane/ngx-charts';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { DataService } from '../../services/data.service';
@@ -17,14 +17,12 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     NgxChartsModule, NgxDatatableModule,
-
     FormsModule,
     HttpClientModule,
     // BrowserAnimationsModule,
   ]
 })
-export class DashboardComponent {
-  // loading: boolean = true;
+export class DashboardComponent implements OnInit {
   // 資料
   incomes: Donation[] = [];
   expenses: Expense[] = [];
@@ -39,14 +37,17 @@ export class DashboardComponent {
   view: [number, number] = [700, 400];
 
   // 顏色配置
-  colorScheme = {
+  colorScheme: Color = {
+    name: 'Political Donations',
+    selectable: true,
+    group: ScaleType.Ordinal,
     domain: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#C9CBCF']
   };
 
   // 顯示設定
   showXAxis = true;
   showYAxis = true;
-  gradient = false;
+  gradient = true;
   showLegend = true;
   showXAxisLabel = true;
   showYAxisLabel = true;
@@ -112,5 +113,19 @@ export class DashboardComponent {
 
   onSelect(event: any): void {
     console.log('選擇項目:', event);
+  }
+  
+  // 計算總額的輔助函數
+  getTotalIncome(): number {
+    return this.incomeCategories.reduce((sum, cat) => sum + cat.value, 0);
+  }
+  
+  getTotalExpense(): number {
+    return this.expenseCategories.reduce((sum, cat) => sum + cat.value, 0);
+  }
+  
+  // 獲取當前年份
+  getCurrentYear(): number {
+    return new Date().getFullYear();
   }
 } 
